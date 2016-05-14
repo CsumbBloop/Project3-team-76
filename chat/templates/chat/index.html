@@ -1,0 +1,37 @@
+
+ {% extends 'music/base.html' %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+  
+  {% if object_list %} 
+
+    <p>
+    <ul>
+        
+        
+        {%for album in object_list %}
+        
+        <h1> {{ album.album_title }}</h1>
+        
+        {% if album.album_logo %}
+        <img src="{{ album.album_logo }}">
+        
+        {% endif %}
+        </p>
+        {% endfor %}
+        <p>
+            <a href= "/chat/album/add/" class="btn btn-primary btn-sm" role="button">Send a Message</a>
+            <a href= "/chat/album/add2/" class="btn btn-primary btn-sm" role="button">Send an Image</a>
+        </p>
+        
+    </ul>
+    <script language="javascript">
+        window.scrollTo(0,document.body.scrollHeight);
+        </script>
+{% else %}
+    <h3> You don't have any</h3>
+    <a href ="/chat/album/add/">Send a Message</a>
+{% endif %}
+{% endblock %}
+
